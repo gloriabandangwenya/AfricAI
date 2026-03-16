@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfricAI — Microsoft 365 Training Catalogue 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:       #0F1C2D;
+  --navy-mid:   #162438;
+  --navy-soft:  #1E3050;
+  --gold:       #C8A45A;
+  --gold-warm:  #D4B472;
+  --gold-pale:  #EDD9A3;
+  --gold-faint: rgba(200,164,90,0.08);
+  --cream:      #FAF6EE;
+  --sand:       #F2EAD8;
+  --text:       #1A1A2E;
+  --text-mid:   #4A4A6A;
+  --text-light: #8A8AAA;
+  --white:      #FFFFFF;
+  --border:     rgba(200,164,90,0.18);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── COVER PAGE ── */
+.cover {
+  background: var(--navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  border: 1px solid rgba(200,164,90,0.08);
+  border-radius: 50%;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -80px;
+  width: 400px; height: 400px;
+  border: 1px solid rgba(200,164,90,0.06);
+  border-radius: 50%;
+}
+
+.dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(200,164,90,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.cover-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 36px; height: 36px;
+}
+
+.brand-name {
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+}
+
+.cover-tag {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200,164,90,0.5);
+  border: 1px solid rgba(200,164,90,0.2);
+  padding: 6px 14px;
+  border-radius: 2px;
+}
+
+.cover-mid {
+  position: relative;
+  z-index: 2;
+}
+
+.cover-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cover-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.cover-title em {
+  font-style: italic;
+  color: var(--gold-pale);
+}
+
+.cover-subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: rgba(250,246,238,0.45);
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.cover-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(200,164,90,0.15);
+  padding-top: 28px;
+}
+
+.cover-stats {
+  display: flex;
+  gap: 48px;
+}
+
+.cover-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold-warm);
+  line-height: 1;
+}
+
+.cover-stat-label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250,246,238,0.35);
+  margin-top: 4px;
+}
+
+.cover-contact {
+  text-align: right;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(250,246,238,0.35);
+  line-height: 1.8;
+}
+
+/* ── NAV / TOC ── */
+.toc {
+  background: var(--navy-mid);
+  padding: 48px 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 4px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid rgba(200,164,90,0.1);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.toc-item:hover {
+  background: var(--gold-faint);
+  border-color: rgba(200,164,90,0.3);
+}
+
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+.toc-label {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(250,246,238,0.65);
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 80px 60px;
+  border-bottom: 1px solid rgba(200,164,90,0.1);
+}
+
+.section:nth-child(even) {
+  background: var(--white);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-left {}
+
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section-icon {
+  font-size: 48px;
+  opacity: 0.15;
+}
+
+.section-intro {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-mid);
+  max-width: 680px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+/* ── COURSE CARDS ── */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.course-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.section:nth-child(even) .course-card {
+  background: var(--sand);
+}
+
+.course-card-header {
+  background: var(--navy);
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-level {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.course-duration {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: rgba(250,246,238,0.4);
+  letter-spacing: 0.1em;
+}
+
+.course-body {
+  padding: 24px;
+}
+
+.course-designed-for {
+  margin-bottom: 18px;
+}
+
+.course-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.course-designed-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.course-outcomes {
+  margin-bottom: 20px;
+}
+
+.course-outcome-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.course-outcome-list li {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.course-outcome-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 10px;
+}
+
+.course-footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-price-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+.course-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--navy);
+}
+
+.course-price span {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-left: 2px;
+}
+
+/* ── PRICING TABLE ── */
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.pricing-table th {
+  background: var(--navy);
+  color: var(--gold-warm);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.pricing-table th:last-child { text-align: right; }
+
+.pricing-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 300;
+}
+
+.pricing-table td:last-child {
+  text-align: right;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--navy);
+}
+
+.pricing-table tr:last-child td { border-bottom: none; }
+.pricing-table tr:hover td { background: var(--gold-faint); }
+
+.pricing-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* ── EXECUTIVE SPECIAL ── */
+.exec-banner {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  margin-top: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.exec-banner::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(200,164,90,0.08) 0%, transparent 70%);
+}
+
+.exec-eyebrow {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.exec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.exec-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.5);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.exec-price-block {
+  text-align: right;
+  position: relative;
+  z-index: 2;
+}
+
+.exec-price-tag {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,164,90,0.5);
+  margin-bottom: 4px;
+}
+
+.exec-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--gold-pale);
+  line-height: 1;
+}
+
+.exec-price-sub {
+  font-size: 10px;
+  color: rgba(200,164,90,0.45);
+  margin-top: 4px;
+}
+
+/* ── COPILOT SPECIAL ── */
+.copilot-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #0A1628 100%);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.copilot-hero-top {
+  padding: 40px 40px 32px;
+  border-bottom: 1px solid rgba(200,164,90,0.12);
+  position: relative;
+}
+
+.copilot-hero-top::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 300px;
+  background: radial-gradient(ellipse at right, rgba(200,164,90,0.05) 0%, transparent 70%);
+}
+
+.copilot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,164,90,0.1);
+  border: 1px solid rgba(200,164,90,0.25);
+  border-radius: 2px;
+  padding: 6px 12px;
+  margin-bottom: 16px;
+}
+
+.copilot-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.copilot-badge-text {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.copilot-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.copilot-hero-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.45);
+  max-width: 560px;
+  line-height: 1.65;
+}
+
+.copilot-why {
+  padding: 28px 40px;
+  background: rgba(200,164,90,0.04);
+  border-bottom: 1px solid rgba(200,164,90,0.1);
+}
+
+.copilot-why-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.copilot-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.copilot-why-item {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.55);
+  line-height: 1.55;
+  padding-left: 12px;
+  border-left: 2px solid rgba(200,164,90,0.25);
+}
+
+/* ── WHAT'S INCLUDED ── */
+.included-strip {
+  background: var(--navy-mid);
+  border-radius: 6px;
+  padding: 28px 32px;
+  margin: 32px 0 0;
+}
+
+.included-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.included-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.6);
+}
+
+.included-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+.footer-brand {}
+
+.footer-brand-name {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  margin-bottom: 10px;
+}
+
+.footer-brand-tag {
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(250,246,238,0.35);
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 20px;
+}
+
+.footer-brand-desc {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.3);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.footer-section-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.footer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-list li {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.4);
+  line-height: 1.5;
+}
+
+.footer-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 14px;
+}
+
+.footer-contact-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+.footer-contact-value {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.5);
+}
+
+.footer-bottom {
+  background: #0A1220;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(250,246,238,0.2);
+  letter-spacing: 0.1em;
+}
+
+.footer-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(200,164,90,0.3);
+}
+
+/* ── PRINT ── */
+@media print {
+  .cover { page-break-after: always; }
+  .toc { page-break-after: always; }
+  .section { page-break-before: always; }
+}
+
+@media (max-width: 768px) {
+  .cover, .toc, .section, .footer { padding: 32px 24px; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .copilot-why-grid { grid-template-columns: 1fr; }
+  .footer { grid-template-columns: 1fr; }
+  .exec-banner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="dot-grid"></div>
+
+  <div class="cover-top">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 36 36" fill="none">
+        <path d="M14 4C13 4.8 12 6.2 12 8C12 9.8 13 10.5 13 12.5C13 14.5 11 15.2 10.5 17C10 18.8 10.5 20 11 21.2C11.5 22.4 11.5 24.2 12.5 25.5C13.5 26.8 15 27.5 16.5 27.5C18 27.5 19.2 26.5 19.8 25.2C20.4 23.9 20.4 22.5 21.5 21.2C22.6 19.9 23.5 19.2 23.5 17.5C23.5 15.8 23 15 22.2 13.8C21.4 12.6 22 11.2 22 10C22 8.8 21.2 7.6 20.5 6.8C19.8 6 18.8 5.4 18 4.8C17.2 4.2 16.4 4 15.2 4C14.6 4 14.3 3.5 14 4Z" stroke="#C8A45A" stroke-width="1" fill="rgba(200,164,90,0.1)" stroke-linecap="round"/>
+        <circle cx="16.5" cy="11" r="1.2" fill="#C8A45A" opacity="0.7"/>
+      </svg>
+      <span class="brand-name">AfricAI</span>
+    </div>
+    <div class="cover-tag">Training Catalogue 2026</div>
+  </div>
+
+  <div class="cover-mid">
+    <div class="cover-eyebrow">Microsoft 365 Training</div>
+    <div class="cover-title">
+      Building Africa's<br><em>Digital Skills</em><br>Foundation
+    </div>
+    <div class="cover-subtitle">Excel · Word · PowerPoint · Outlook · Teams · Copilot</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-stats">
+      <div>
+        <div class="cover-stat-num">400+</div>
+        <div class="cover-stat-label">Professionals Trained</div>
+      </div>
+      <div>
+        <div class="cover-stat-num">4.9/5</div>
+        <div class="cover-stat-label">Satisfaction Rating</div>
+      </div>
+      <div>
+        <div class="cover-stat-num">7</div>
+        <div class="cover-stat-label">Languages</div>
+      </div>
+    </div>
+    <div class="cover-contact">
+      <div>gloriabandangwenya@gmail.com</div>
+      <div>+263 779 208 031</div>
+      <div>Harare, Zimbabwe · Remote Training Available</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="toc">
+  <div class="toc-title">Course Directory</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#excel"><span class="toc-num">01</span><span class="toc-label">Microsoft Excel</span></a>
+    <a class="toc-item" href="#word"><span class="toc-num">02</span><span class="toc-label">Microsoft Word</span></a>
+    <a class="toc-item" href="#powerpoint"><span class="toc-num">03</span><span class="toc-label">PowerPoint</span></a>
+    <a class="toc-item" href="#outlook"><span class="toc-num">04</span><span class="toc-label">Outlook</span></a>
+    <a class="toc-item" href="#teams"><span class="toc-num">05</span><span class="toc-label">Microsoft Teams</span></a>
+    <a class="toc-item" href="#copilot"><span class="toc-num">06</span><span class="toc-label">Microsoft Copilot</span></a>
+  </div>
+</section>
+
+<!-- 01 EXCEL -->
+<section class="section" id="excel">
+  <div class="section-header">
+    <div class="section-left">
+      <div class="section-num">01 / 06</div>
+      <div class="section-title">Microsoft <em>Excel</em></div>
+    </div>
+    <div class="section-icon">📊</div>
+  </div>
+
+  <p class="section-intro">Excel is the backbone of data-driven work across every industry in Africa. Our three-level Excel training takes participants from complete beginner through to confident data analyst — equipping them with practical, immediately applicable skills that transform how they work every day.</p>
+
+  <div class="courses-grid">
+    <!-- Level 1 -->
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 1 — Foundations</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">New Excel users and professionals who rely on Excel daily but have never received formal training — admin staff, coordinators, entry-level analysts, and frontline teams.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Navigate Excel confidently — ribbons, views, workbooks, and worksheets</li>
+            <li>Enter, edit, and organise data accurately and efficiently</li>
+            <li>Use essential formulas: SUM, AVERAGE, COUNT, IF, and cell references</li>
+            <li>Format workbooks professionally for internal reports and client-facing documents</li>
+            <li>Sort, filter, and manage data tables for quick analysis</li>
+            <li>Create clear, well-labelled charts from data sets</li>
+            <li>Set up and print documents correctly for professional output</li>
+            <li>Understand how Copilot and AI tools connect to Excel basics</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$75 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level 2 -->
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 2 — Intermediate</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Users comfortable with Excel basics who want to work faster, analyse data more deeply, and reduce manual work — supervisors, analysts, finance staff, and team leads.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Use advanced lookup functions: VLOOKUP, HLOOKUP, XLOOKUP, and INDEX/MATCH</li>
+            <li>Apply logical functions: IF, AND, OR, nested IF statements</li>
+            <li>Work with named ranges for cleaner, more readable formulas</li>
+            <li>Build and customise PivotTables for instant data summarisation</li>
+            <li>Apply conditional formatting to highlight critical information visually</li>
+            <li>Use data validation to build controlled, error-free input forms</li>
+            <li>Create dynamic charts and sparklines for reporting</li>
+            <li>Leverage Copilot and AI tools within intermediate Excel workflows</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$85 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level 3 -->
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 3 — Advanced</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Experienced Excel users who need to handle complex data, build automated systems, and create executive-level dashboards — senior analysts, finance managers, operations leads, and data teams.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Import, clean, and transform data using Power Query</li>
+            <li>Build complex nested and array formulas for advanced analysis</li>
+            <li>Design interactive executive dashboards with slicers and dynamic charts</li>
+            <li>Automate repetitive tasks using macros and basic VBA</li>
+            <li>Consolidate data across multiple sheets and workbooks</li>
+            <li>Apply advanced PivotTable techniques including calculated fields</li>
+            <li>Build data models and use Power Pivot for large datasets</li>
+            <li>Integrate Copilot for automated data analysis and insight generation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$110 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Volume pricing -->
+  <div class="course-label" style="margin-bottom:12px;">Volume Pricing — Excel (All Levels)</div>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Group Size</th>
+        <th>Level 1 — Foundations</th>
+        <th>Level 2 — Intermediate</th>
+        <th>Level 3 — Advanced</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10 – 24 people</td><td>$75 per person</td><td>$85 per person</td><td>$110 per person</td></tr>
+      <tr><td>25 – 49 people</td><td>$65 per person</td><td>$75 per person</td><td>$95 per person</td></tr>
+      <tr><td>50 – 99 people</td><td>$55 per person</td><td>$65 per person</td><td>$85 per person</td></tr>
+      <tr><td>100+ people</td><td>$50 per person</td><td>$55 per person</td><td>$75 per person</td></tr>
+    </tbody>
+  </table>
+  <p class="pricing-note">Minimum booking: 10 participants. Pre-training skills assessment available at $250 flat — recommended for groups with mixed skill levels.</p>
+
+  <div class="exec-banner">
+    <div>
+      <div class="exec-eyebrow">Executive Tier</div>
+      <div class="exec-title">Excel for Executives & Senior Managers</div>
+      <div class="exec-desc">A boardroom-style session designed for senior leadership. Focus on data interpretation, dashboard reading, and using Excel strategically for decision-making — not day-to-day operations. Maximum 15 participants. Fully customised to your organisation's reporting context.</div>
+    </div>
+    <div class="exec-price-block">
+      <div class="exec-price-tag">Flat Rate</div>
+      <div class="exec-price">$150</div>
+      <div class="exec-price-sub">per person · max 15</div>
+    </div>
+  </div>
+
+  <div class="included-strip">
+    <div class="included-title">Every Excel Training Includes</div>
+    <div class="included-grid">
+      <div class="included-item"><span class="included-dot"></span>Pre-training discovery survey</div>
+      <div class="included-item"><span class="included-dot"></span>Bespoke exercises using your data</div>
+      <div class="included-item"><span class="included-dot"></span>Quick reference guide (take-away)</div>
+      <div class="included-item"><span class="included-dot"></span>Post-training support (5 days)</div>
+      <div class="included-item"><span class="included-dot"></span>Certificate of completion</div>
+      <div class="included-item"><span class="included-dot"></span>Training delivered in English or Shona</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WORD -->
+<section class="section" id="word">
+  <div class="section-header">
+    <div class="section-left">
+      <div class="section-num">02 / 06</div>
+      <div class="section-title">Microsoft <em>Word</em></div>
+    </div>
+    <div class="section-icon">📝</div>
+  </div>
+
+  <p class="section-intro">Professional document creation is a foundational workplace skill. Our Word training moves participants beyond basic typing into confident, efficient document professionals — producing work that reflects the standard of their organisation.</p>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 1 — Foundations</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Staff who create documents regularly but have never been formally trained — admin assistants, receptionists, coordinators, and customer-facing teams.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Navigate Word efficiently and customise the working environment</li>
+            <li>Format text, paragraphs, and pages with consistency and professionalism</li>
+            <li>Use styles and themes to create visually coherent documents</li>
+            <li>Insert and format tables, images, and basic graphics</li>
+            <li>Use Find & Replace, spell check, and proofing tools effectively</li>
+            <li>Create professional letters, memos, and reports from scratch</li>
+            <li>Save, share, and manage documents correctly across devices</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 2 — Intermediate</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Professionals who create complex documents, proposals, policies, and reports — executive assistants, managers, HR professionals, and communications staff.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Build and manage long documents with automated tables of contents</li>
+            <li>Use section breaks, headers, footers, and page numbering with precision</li>
+            <li>Create and use templates for consistent organisational branding</li>
+            <li>Use Track Changes and Comments for collaborative document review</li>
+            <li>Perform mail merge for bulk personalised communications</li>
+            <li>Insert cross-references, footnotes, endnotes, and citations</li>
+            <li>Protect and restrict documents for controlled sharing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Group Size</th>
+        <th>Level 1 — Foundations</th>
+        <th>Level 2 — Intermediate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10 – 24 people</td><td>$70 per person</td><td>$70 per person</td></tr>
+      <tr><td>25 – 49 people</td><td>$60 per person</td><td>$60 per person</td></tr>
+      <tr><td>50 – 99 people</td><td>$50 per person</td><td>$50 per person</td></tr>
+      <tr><td>100+ people</td><td>$45 per person</td><td>$45 per person</td></tr>
+    </tbody>
+  </table>
+  <p class="pricing-note">Executive tier available at $150 per person for senior leadership — focused on strategic communication, proposals, and board-level document standards.</p>
+
+  <div class="included-strip">
+    <div class="included-title">Every Word Training Includes</div>
+    <div class="included-grid">
+      <div class="included-item"><span class="included-dot"></span>Pre-training discovery survey</div>
+      <div class="included-item"><span class="included-dot"></span>Organisation document templates</div>
+      <div class="included-item"><span class="included-dot"></span>Quick reference guide</div>
+      <div class="included-item"><span class="included-dot"></span>Post-training support (5 days)</div>
+      <div class="included-item"><span class="included-dot"></span>Certificate of completion</div>
+      <div class="included-item"><span class="included-dot"></span>Delivered in English or Shona</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 POWERPOINT -->
+<section class="section" id="powerpoint">
+  <div class="section-header">
+    <div class="section-left">
+      <div class="section-num">03 / 06</div>
+      <div class="section-title">Microsoft <em>PowerPoint</em></div>
+    </div>
+    <div class="section-icon">🎯</div>
+  </div>
+
+  <p class="section-intro">In Africa's corporate environment, how you present ideas is as important as the ideas themselves. Our PowerPoint training teaches participants not just the software — but how to tell a compelling story through slides that command a room.</p>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 1 — Foundations</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Anyone who creates presentations but lacks confidence — team members presenting to colleagues, staff preparing management reports, and those who default to too much text on every slide.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Build structured, visually clean presentations from scratch</li>
+            <li>Apply themes, colour palettes, and fonts consistently</li>
+            <li>Use layouts, placeholders, and master slides correctly</li>
+            <li>Insert and format images, shapes, icons, and SmartArt</li>
+            <li>Add purposeful animations and transitions — not just effects</li>
+            <li>Present with confidence using Presenter View and speaker notes</li>
+            <li>Save, export, and share presentations in multiple formats</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 2 — Intermediate</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Managers, executives, and communications staff who present to leadership, boards, clients, or external audiences and want their presentations to reflect genuine professional quality.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Design and maintain custom Slide Masters for organisational templates</li>
+            <li>Build data visualisations directly in PowerPoint using charts and tables</li>
+            <li>Create advanced animations with motion paths and triggers</li>
+            <li>Apply visual hierarchy and whitespace principles for executive audiences</li>
+            <li>Embed video, audio, and live data links</li>
+            <li>Use Morph transitions for cinematic, high-impact presentations</li>
+            <li>Collaborate on presentations in real-time using Microsoft 365</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Group Size</th>
+        <th>Level 1 — Foundations</th>
+        <th>Level 2 — Intermediate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10 – 24 people</td><td>$70 per person</td><td>$70 per person</td></tr>
+      <tr><td>25 – 49 people</td><td>$60 per person</td><td>$60 per person</td></tr>
+      <tr><td>50 – 99 people</td><td>$50 per person</td><td>$50 per person</td></tr>
+      <tr><td>100+ people</td><td>$45 per person</td><td>$45 per person</td></tr>
+    </tbody>
+  </table>
+  <p class="pricing-note">Executive tier available at $150 per person — focused on board presentation design, strategic storytelling, and high-stakes communication.</p>
+
+  <div class="included-strip">
+    <div class="included-title">Every PowerPoint Training Includes</div>
+    <div class="included-grid">
+      <div class="included-item"><span class="included-dot"></span>Pre-training discovery survey</div>
+      <div class="included-item"><span class="included-dot"></span>Custom branded slide template</div>
+      <div class="included-item"><span class="included-dot"></span>Design principles quick guide</div>
+      <div class="included-item"><span class="included-dot"></span>Post-training support (5 days)</div>
+      <div class="included-item"><span class="included-dot"></span>Certificate of completion</div>
+      <div class="included-item"><span class="included-dot"></span>Delivered in English or Shona</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 OUTLOOK -->
+<section class="section" id="outlook">
+  <div class="section-header">
+    <div class="section-left">
+      <div class="section-num">04 / 06</div>
+      <div class="section-title">Microsoft <em>Outlook</em></div>
+    </div>
+    <div class="section-icon">📧</div>
+  </div>
+
+  <p class="section-intro">Most professionals spend 2 to 4 hours per day in their inbox — yet very few have been taught how to use Outlook effectively. Our Outlook training transforms email from a time drain into a managed, productive system.</p>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 1 — Foundations</span>
+        <span class="course-duration">4 hrs / Half Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">All staff who use email at work — from frontline employees to admin teams who manage high volumes of correspondence daily.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Compose professional emails — structure, tone, and etiquette</li>
+            <li>Organise inbox using folders, categories, and flags</li>
+            <li>Manage calendar — create meetings, set reminders, share availability</li>
+            <li>Use contacts and address book effectively</li>
+            <li>Create and use email signatures professionally</li>
+            <li>Set up Out of Office replies and automatic responses</li>
+            <li>Manage attachments safely and efficiently</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 2 — Intermediate</span>
+        <span class="course-duration">4 hrs / Half Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Managers and executives who handle large volumes of email and need systems for managing their time, communication, and team coordination through Outlook.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Build rules and automation to sort and process email automatically</li>
+            <li>Use Quick Steps to action emails in one click</li>
+            <li>Manage multiple calendars and delegate access to assistants</li>
+            <li>Track tasks and to-dos directly from emails using Tasks and To Do</li>
+            <li>Use Focused Inbox and email management strategies to reduce overwhelm</li>
+            <li>Schedule and manage large meetings and recurring events</li>
+            <li>Integrate Outlook with Teams and other Microsoft 365 apps</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Group Size</th>
+        <th>Level 1 — Foundations</th>
+        <th>Level 2 — Intermediate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10 – 24 people</td><td>$70 per person</td><td>$70 per person</td></tr>
+      <tr><td>25 – 49 people</td><td>$60 per person</td><td>$60 per person</td></tr>
+      <tr><td>50 – 99 people</td><td>$50 per person</td><td>$50 per person</td></tr>
+      <tr><td>100+ people</td><td>$45 per person</td><td>$45 per person</td></tr>
+    </tbody>
+  </table>
+  <p class="pricing-note">Executive tier available at $150 per person — focused on inbox zero strategies, calendar mastery, and delegation systems for senior leadership.</p>
+
+  <div class="included-strip">
+    <div class="included-title">Every Outlook Training Includes</div>
+    <div class="included-grid">
+      <div class="included-item"><span class="included-dot"></span>Pre-training discovery survey</div>
+      <div class="included-item"><span class="included-dot"></span>Email productivity quick guide</div>
+      <div class="included-item"><span class="included-dot"></span>Inbox management system template</div>
+      <div class="included-item"><span class="included-dot"></span>Post-training support (5 days)</div>
+      <div class="included-item"><span class="included-dot"></span>Certificate of completion</div>
+      <div class="included-item"><span class="included-dot"></span>Delivered in English or Shona</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 TEAMS -->
+<section class="section" id="teams">
+  <div class="section-header">
+    <div class="section-left">
+      <div class="section-num">05 / 06</div>
+      <div class="section-title">Microsoft <em>Teams</em></div>
+    </div>
+    <div class="section-icon">💬</div>
+  </div>
+
+  <p class="section-intro">Microsoft Teams is the central hub of modern collaborative work. Our Teams training empowers organisations to move from email chaos to structured, efficient team communication — reducing meetings, accelerating decisions, and keeping everyone connected.</p>
+
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 1 — Foundations</span>
+        <span class="course-duration">4 hrs / Half Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">All staff new to Teams or using it inconsistently — organisations rolling out Teams for the first time or teams where adoption has been slow and fragmented.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Navigate Teams confidently — channels, chats, and activity feeds</li>
+            <li>Join, host, and manage video meetings professionally</li>
+            <li>Share and collaborate on files directly within Teams</li>
+            <li>Use chat effectively — reactions, mentions, threading, and etiquette</li>
+            <li>Set up and organise Teams and Channels for their department</li>
+            <li>Integrate Teams with Outlook calendar and scheduling</li>
+            <li>Manage notifications and availability status</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Level 2 — Intermediate</span>
+        <span class="course-duration">4 hrs / Half Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Team leads, managers, and department heads who need to structure their team's digital workspace, improve collaboration, and maximise Teams as a productivity hub.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Design and manage Teams architecture for their department</li>
+            <li>Add and configure tabs — SharePoint, Planner, Forms, and more</li>
+            <li>Use Planner within Teams for task and project management</li>
+            <li>Run effective virtual meetings — polls, breakout rooms, whiteboards</li>
+            <li>Share and co-author documents in real time via Teams</li>
+            <li>Manage guest access for external collaboration</li>
+            <li>Use Teams with Copilot for meeting summaries and action items</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Per Person (10–24 pax)</div>
+          <div class="course-price">$70 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Group Size</th>
+        <th>Level 1 — Foundations</th>
+        <th>Level 2 — Intermediate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10 – 24 people</td><td>$70 per person</td><td>$70 per person</td></tr>
+      <tr><td>25 – 49 people</td><td>$60 per person</td><td>$60 per person</td></tr>
+      <tr><td>50 – 99 people</td><td>$50 per person</td><td>$50 per person</td></tr>
+      <tr><td>100+ people</td><td>$45 per person</td><td>$45 per person</td></tr>
+    </tbody>
+  </table>
+  <p class="pricing-note">Executive tier available at $150 per person — focused on leading distributed teams, digital governance, and using Teams strategically at leadership level.</p>
+
+  <div class="included-strip">
+    <div class="included-title">Every Teams Training Includes</div>
+    <div class="included-grid">
+      <div class="included-item"><span class="included-dot"></span>Pre-training discovery survey</div>
+      <div class="included-item"><span class="included-dot"></span>Teams structure recommendation</div>
+      <div class="included-item"><span class="included-dot"></span>Meeting etiquette guide</div>
+      <div class="included-item"><span class="included-dot"></span>Post-training support (5 days)</div>
+      <div class="included-item"><span class="included-dot"></span>Certificate of completion</div>
+      <div class="included-item"><span class="included-dot"></span>Delivered in English or Shona</div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 COPILOT -->
+<section class="section" id="copilot">
+  <div class="section-header">
+    <div class="section-left">
+      <div class="section-num">06 / 06</div>
+      <div class="section-title">Microsoft <em>Copilot</em></div>
+    </div>
+    <div class="section-icon">🤖</div>
+  </div>
+
+  <div class="copilot-hero">
+    <div class="copilot-hero-top">
+      <div class="copilot-badge">
+        <div class="copilot-badge-dot"></div>
+        <span class="copilot-badge-text">Africa's AI Frontier</span>
+      </div>
+      <div class="copilot-hero-title">The Future of Work is Already Here</div>
+      <div class="copilot-hero-sub">Microsoft Copilot is the AI layer built into the Microsoft 365 tools your organisation already uses. Most organisations in Africa have access to it — but almost nobody has been shown how to use it properly. That gap is costing organisations hours of productivity every single day.</div>
+    </div>
+    <div class="copilot-why">
+      <div class="copilot-why-title">Why Copilot Training Matters Now</div>
+      <div class="copilot-why-grid">
+        <div class="copilot-why-item">Most organisations pay for Copilot licences but usage rates remain below 20%. Training is the difference between a wasted investment and a transformation.</div>
+        <div class="copilot-why-item">Copilot works inside Excel, Word, PowerPoint, Outlook, and Teams. Staff who have completed Microsoft 365 training will adopt Copilot significantly faster.</div>
+        <div class="copilot-why-item">The professionals who learn to work with AI now will define their organisations' competitive position in the next five years. Africa cannot afford to wait.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="courses-grid" style="margin-top:32px;">
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Copilot Foundations</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">All staff with basic Microsoft 365 familiarity who are ready to start working with AI — professionals who want to save time, reduce repetitive work, and produce higher quality output using Copilot.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Understand what Copilot is, how it works, and what it can and cannot do</li>
+            <li>Write effective prompts — the skill that determines Copilot's output quality</li>
+            <li>Use Copilot in Word to draft, summarise, and rewrite documents</li>
+            <li>Use Copilot in Excel to analyse data, generate formulas, and create insights</li>
+            <li>Use Copilot in Outlook to manage email — draft replies, summarise threads</li>
+            <li>Use Copilot in Teams to summarise meetings and generate action items</li>
+            <li>Use Copilot in PowerPoint to build presentations from briefs</li>
+            <li>Apply Copilot to their specific job role with practical workplace scenarios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Flat Rate — All Group Sizes</div>
+          <div class="course-price">$200 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-card-header">
+        <span class="course-level">Copilot Advanced</span>
+        <span class="course-duration">6 hrs / Full Day</span>
+      </div>
+      <div class="course-body">
+        <div class="course-designed-for">
+          <div class="course-label">Designed For</div>
+          <div class="course-designed-text">Managers, analysts, and power users who have completed Copilot Foundations and are ready to use AI at a strategic level — building workflows, governing AI use, and maximising ROI across their organisation.</div>
+        </div>
+        <div class="course-outcomes">
+          <div class="course-label">What Participants Will Be Able To Do</div>
+          <ul class="course-outcome-list">
+            <li>Master advanced prompting — chaining prompts, personas, context-setting</li>
+            <li>Build and deploy basic Copilot agents using Copilot Studio</li>
+            <li>Design department-specific AI workflows that save measurable hours</li>
+            <li>Implement AI governance — data privacy, acceptable use, and policy frameworks</li>
+            <li>Measure and report on Copilot ROI for leadership and boards</li>
+            <li>Train and coach colleagues as internal Copilot champions</li>
+            <li>Stay current as Copilot evolves — how to adopt new features strategically</li>
+            <li>Lead organisational AI adoption as a change management process</li>
+          </ul>
+        </div>
+      </div>
+      <div class="course-footer">
+        <div>
+          <div class="course-price-label">Flat Rate — All Group Sizes</div>
+          <div class="course-price">$350 <span>per person</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="pricing-table" style="margin-top:32px;">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Duration</th>
+        <th>Audience</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Copilot Foundations</td><td>Full day</td><td>All staff — basic M365 familiarity required</td><td>$200 per person</td></tr>
+      <tr><td>Copilot Advanced</td><td>Full day</td><td>Managers, analysts, power users</td><td>$350 per person</td></tr>
+      <tr><td>Copilot for Executives</td><td>Half day</td><td>C-suite and senior leadership</td><td>$350 per person</td></tr>
+    </tbody>
+  </table>
+  <p class="pricing-note">Copilot training is priced at a flat rate regardless of group size. This is specialist, high-demand knowledge — no volume discount applies. Prerequisite: participants should have working familiarity with Microsoft 365 applications. We recommend completing relevant app-level training before Copilot courses for maximum impact.</p>
+
+  <div class="included-strip">
+    <div class="included-title">Every Copilot Training Includes</div>
+    <div class="included-grid">
+      <div class="included-item"><span class="included-dot"></span>Pre-training skills assessment</div>
+      <div class="included-item"><span class="included-dot"></span>Industry-specific use case library</div>
+      <div class="included-item"><span class="included-dot"></span>Prompt engineering quick guide</div>
+      <div class="included-item"><span class="included-dot"></span>30-day post-training support</div>
+      <div class="included-item"><span class="included-dot"></span>Certificate of completion</div>
+      <div class="included-item"><span class="included-dot"></span>AI governance policy starter template</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">
+    <div class="footer-brand-name">AfricAI</div>
+    <div class="footer-brand-tag">Empowering Africa with AI Skills</div>
+    <div class="footer-brand-desc">AfricAI delivers world-class Microsoft 365 and AI training across Zimbabwe and the African continent — building the digital skills foundation that Africa's workforce needs to thrive in the age of artificial intelligence.</div>
+  </div>
+
+  <div>
+    <div class="footer-section-title">Training Programmes</div>
+    <ul class="footer-list">
+      <li>Microsoft Excel — Levels 1, 2 & 3</li>
+      <li>Microsoft Word — Levels 1 & 2</li>
+      <li>Microsoft PowerPoint — Levels 1 & 2</li>
+      <li>Microsoft Outlook — Levels 1 & 2</li>
+      <li>Microsoft Teams — Levels 1 & 2</li>
+      <li>Microsoft Copilot — Foundations & Advanced</li>
+      <li>Executive & Management Tier — All Apps</li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="footer-section-title">Get In Touch</div>
+    <div class="footer-contact-item">
+      <span class="footer-contact-label">Email</span>
+      <span class="footer-contact-value">gloriabandangwenya@gmail.com</span>
+    </div>
+    <div class="footer-contact-item">
+      <span class="footer-contact-label">WhatsApp</span>
+      <span class="footer-contact-value">+263 779 208 031</span>
+    </div>
+    <div class="footer-contact-item">
+      <span class="footer-contact-label">Location</span>
+      <span class="footer-contact-value">Harare, Zimbabwe · Remote Training Available</span>
+    </div>
+  </div>
+</
