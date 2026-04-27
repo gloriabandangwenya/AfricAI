@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Copilot Training Proposal — AfricAI for Mandel Learning Centre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:       #050F1E;
+  --navy-mid:   #0A1A30;
+  --navy-soft:  #102040;
+  --cyan:       #00C4E8;
+  --cyan-soft:  #00A8C8;
+  --cyan-faint: rgba(0,196,232,0.07);
+  --cyan-glow:  rgba(0,196,232,0.15);
+  --white:      #FFFFFF;
+  --cream:      #F0F8FF;
+  --text-dim:   rgba(240,248,255,0.5);
+  --text-mid:   rgba(240,248,255,0.7);
+  --border:     rgba(0,196,232,0.15);
+  --border-bright: rgba(0,196,232,0.35);
+  --sand:       #F5F9FC;
+  --ink:        #0F1C2D;
+  --ink-mid:    #2D3748;
+  --ink-light:  #718096;
+  --border-ink: rgba(15,28,45,0.08);
+}
+
+html { font-size: 15px; }
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 0 80px;
+}
+
+/* TOP BAR */
+.top-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--navy) 0%, var(--cyan) 50%, rgba(0,196,232,0.4) 100%);
+}
+
+/* COVER */
+.cover {
+  background: var(--navy);
+  padding: 56px 64px 48px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,196,232,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,196,232,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,196,232,0.06) 0%, transparent 65%);
+}
+
+.cover-inner { position: relative; z-index: 2; }
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-img {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0,196,232,0.3);
+  box-shadow: 0 0 20px rgba(0,196,232,0.15);
+}
+
+.brand-text {}
+
+.brand-name {
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.brand-tagline {
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+.cover-badge {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--border-bright);
+  padding: 7px 14px;
+  background: var(--cyan-faint);
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.cover-title em {
+  font-style: italic;
+  color: var(--cyan);
+}
+
+.cover-subtitle {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 40px;
+}
+
+.cover-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  opacity: 0.3;
+  margin-bottom: 32px;
+}
+
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.cover-meta-label {
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.5;
+  margin-bottom: 5px;
+}
+
+.cover-meta-value {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* STATS STRIP */
+.stats-strip {
+  background: var(--navy-mid);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stat {
+  padding: 18px 20px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--cyan);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* SECTION */
+.section {
+  padding: 48px 64px;
+  border-bottom: 1px solid var(--border);
+  background: var(--navy);
+}
+
+.section.alt { background: var(--navy-mid); }
+
+.section-eyebrow {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.8;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 18px; height: 1px;
+  background: var(--cyan);
+  opacity: 0.5;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--cyan);
+}
+
+.section-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+/* PROBLEM CARDS */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 32px;
+}
+
+.problem-card {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  padding: 24px 22px;
+  transition: border-color 0.2s;
+}
+
+.problem-card:hover { border-color: var(--border-bright); }
+
+.problem-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--cyan);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.problem-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.problem-text {
+  font-size: 11.5px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* APPROACH GRID */
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 32px;
+}
+
+.approach-card {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  padding: 24px 26px;
+  transition: border-color 0.2s;
+}
+
+.approach-card:hover { border-color: var(--border-bright); }
+
+.approach-card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--cyan);
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.approach-card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.approach-card-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* COURSES */
+.courses {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.course-row {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  padding: 18px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.course-row:hover { background: var(--cyan-faint); border-color: var(--border-bright); }
+
+.course-row-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--cyan);
+  opacity: 0.5;
+}
+
+.course-row-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.course-row-desc {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.course-row-duration {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+}
+
+/* PILOT */
+.pilot-highlight {
+  background: var(--navy-mid);
+  border: 1px solid var(--border-bright);
+  padding: 32px 36px;
+  margin-top: 16px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+
+.pilot-highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,196,232,0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.pilot-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,196,232,0.08) 0%, transparent 65%);
+}
+
+.pilot-left { position: relative; z-index: 2; }
+
+.pilot-badge {
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: var(--cyan-faint);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.pilot-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.pilot-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.pilot-right {
+  position: relative;
+  z-index: 2;
+  text-align: right;
+}
+
+.pilot-cta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cyan);
+  opacity: 0.7;
+}
+
+.pilot-cta-sub {
+  font-size: 9px;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* CASE STUDY */
+.case-study {
+  background: var(--navy-soft);
+  border: 1px solid var(--border-bright);
+  padding: 36px 40px;
+  margin-top: 0;
+}
+
+.case-study-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.case-study-client {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.case-study-client span {
+  display: block;
+  font-size: 10px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+.case-study-rating-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--cyan);
+  line-height: 1;
+  text-align: right;
+}
+
+.case-study-rating-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: right;
+  margin-top: 4px;
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.case-study-block-label {
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.case-study-block-text {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* GOVERNANCE */
+.governance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 28px;
+}
+
+.governance-item {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  padding: 20px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: border-color 0.2s;
+}
+
+.governance-item:hover { border-color: var(--border-bright); }
+
+.governance-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
+.governance-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.governance-text {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* TIMELINE */
+.timeline {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+.timeline-week {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  padding-top: 3px;
+}
+
+.timeline-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 5px;
+}
+
+.timeline-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 28px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.about-stat {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  padding: 18px 20px;
+}
+
+.about-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--cyan);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.about-stat-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.about-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-cred {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.55;
+}
+
+.about-cred-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.5;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* INVESTMENT */
+.investment-box {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 32px 36px;
+  margin-top: 28px;
+}
+
+.investment-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+/* FOOTER */
+.footer {
+  background: #020A14;
+  padding: 32px 64px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  border-top: 1px solid var(--border-bright);
+}
+
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.footer-tagline em { font-style: normal; color: var(--cyan); opacity: 0.7; }
+
+.footer-contact {
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(240,248,255,0.2);
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-brand-img {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0,196,232,0.2);
+  opacity: 0.6;
+}
+
+.footer-brand-name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,248,255,0.2);
+}
+
+@media (max-width: 680px) {
+  .section, .cover, .footer { padding-left: 28px; padding-right: 28px; }
+  .problem-grid, .approach-grid, .governance-grid, .about-grid, .case-study-grid { grid-template-columns: 1fr; }
+  .cover-meta, .about-stats { grid-template-columns: 1fr 1fr; }
+  .pilot-highlight { grid-template-columns: 1fr; }
+  .footer { grid-template-columns: 1fr; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-top">
+      <div class="brand">
+        <img src="unnamed__1_.jpg" alt="AfricAI" class="brand-img" onerror="this.style.display='none'">
+        <div class="brand-text">
+          <div class="brand-name">AfricAI</div>
+          <div class="brand-tagline">Empowering Africa with AI Skills</div>
+        </div>
+      </div>
+      <div class="cover-badge">Training Proposal · April 2026</div>
+    </div>
+
+    <div class="cover-title">Microsoft Copilot<br>Training <em>Proposal</em></div>
+    <div class="cover-subtitle">Prepared for Mandel Learning Centre · Delta Beverages Zimbabwe</div>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-meta">
+      <div>
+        <div class="cover-meta-label">Prepared by</div>
+        <div class="cover-meta-value">Gloria Ngwenya via AfricAI<br>Microsoft Copilot Adoption Specialist</div>
+      </div>
+      <div>
+        <div class="cover-meta-label">Prepared for</div>
+        <div class="cover-meta-value">Mandel Learning Centre<br>Delta Beverages Zimbabwe</div>
+      </div>
+      <div>
+        <div class="cover-meta-label">Engagement Type</div>
+        <div class="cover-meta-value">Role-Specific Copilot Training<br>and AI Governance</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat">
+    <div class="stat-num">400+</div>
+    <div class="stat-label">Professionals Trained</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">4.9/5</div>
+    <div class="stat-label">Satisfaction Rating</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Years M365 Experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">7</div>
+    <div class="stat-label">Languages</div>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section">
+  <div class="section-eyebrow">Executive Summary</div>
+  <h2 class="section-title">The opportunity <em>inside</em> your Microsoft licences</h2>
+  <p class="section-text">Delta Beverages already has access to one of the most powerful productivity tools available to enterprise organisations today. Microsoft Copilot is embedded in the Microsoft 365 environment your teams use daily. The question is not whether to adopt it. The question is whether your people know how to use it well enough to generate real returns on that investment.</p>
+  <p class="section-text" style="margin-top:16px;">This proposal outlines a structured, role-specific Copilot training programme designed specifically for Delta's teams, built around how your people actually work rather than a generic AI overview.</p>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-num">20%</div>
+      <div class="problem-title">Average adoption without training</div>
+      <div class="problem-text">Without structured role-specific training, fewer than 1 in 5 employees meaningfully engage with Copilot after it is made available to them.</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-num">$$</div>
+      <div class="problem-title">Licence investment at risk</div>
+      <div class="problem-text">Every unused Copilot licence represents wasted investment. For an enterprise the size of Delta, this adds up to significant cost with no measurable return.</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-num">Q</div>
+      <div class="problem-title">Copilot updates every quarter</div>
+      <div class="problem-text">Microsoft releases significant new Copilot capabilities continuously. Without ongoing training, your organisation falls further behind with every update cycle.</div>
+    </div>
+  </div>
+</div>
+
+<!-- APPROACH -->
+<div class="section alt">
+  <div class="section-eyebrow">Our Approach</div>
+  <h2 class="section-title">Not generic training.<br><em>Role-specific</em> transformation.</h2>
+  <p class="section-text">The difference between a training programme that gets a 10/10 rating and one that gets forgotten is specificity. Generic Copilot training teaches features. Role-specific Copilot training changes how a department works. Every session is built around the real daily tasks, workflows, and challenges of a specific professional role.</p>
+
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="approach-card-num">01 · Discovery First</div>
+      <div class="approach-card-title">We learn your team before we train them</div>
+      <div class="approach-card-text">A pre-training survey maps current usage, confidence levels, and specific workflow bottlenecks. A short briefing with the department head aligns on priorities and success criteria. By the time training begins, every example and use case is built around Delta's actual environment.</div>
+    </div>
+    <div class="approach-card">
+      <div class="approach-card-num">02 · Role-Specific Delivery</div>
+      <div class="approach-card-title">Built for your role, not for everyone</div>
+      <div class="approach-card-text">An HR professional and a Finance analyst have completely different Copilot needs, so each session is designed for one department's specific workflows: the tasks they do every day, the documents they create, the data they analyse, the communications they send.</div>
+    </div>
+    <div class="approach-card">
+      <div class="approach-card-num">03 · Reinforcement and Support</div>
+      <div class="approach-card-title">We stay after the training ends</div>
+      <div class="approach-card-text">Most training programmes deliver and disappear. We include post-training check-ins to address what comes up in real usage, reinforce new habits, and ensure adoption actually sticks beyond the training day itself.</div>
+    </div>
+    <div class="approach-card">
+      <div class="approach-card-num">04 · Measurable Outcomes</div>
+      <div class="approach-card-title">You see what changed</div>
+      <div class="approach-card-text">Every engagement includes an adoption progress report covering confidence shift before and after, usage patterns, key wins, and a clear recommendation for the next phase. You can demonstrate ROI to leadership and boards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSED PROGRAMME -->
+<div class="section">
+  <div class="section-eyebrow">Proposed Programme</div>
+  <h2 class="section-title">Role-specific Copilot training<br>for <em>Delta's teams</em></h2>
+  <p class="section-text">The following courses are recommended based on Delta's organisational structure. Each can be delivered independently or as part of a phased programme. All sessions are available in-person at Delta's premises or virtually.</p>
+
+  <div class="courses">
+    <div class="course-row">
+      <div class="course-row-num">01</div>
+      <div>
+        <div class="course-row-name">Copilot Foundations</div>
+        <div class="course-row-desc">Essential starting point for all staff. Covers prompting, Word, Excel, Outlook, Teams, and PowerPoint. Builds the foundation for every specialised course.</div>
+      </div>
+      <div class="course-row-duration">Full Day</div>
+    </div>
+    <div class="course-row">
+      <div class="course-row-num">02</div>
+      <div>
+        <div class="course-row-name">Copilot for Finance</div>
+        <div class="course-row-desc">Excel data analysis, formula generation, financial report drafting, board pack creation, and financial narrative writing with Copilot.</div>
+      </div>
+      <div class="course-row-duration">Half Day</div>
+    </div>
+    <div class="course-row">
+      <div class="course-row-num">03</div>
+      <div>
+        <div class="course-row-name">Copilot for HR</div>
+        <div class="course-row-desc">Job descriptions, onboarding documentation, performance review frameworks, HR policy drafting, and employee communications.</div>
+      </div>
+      <div class="course-row-duration">Half Day</div>
+    </div>
+    <div class="course-row">
+      <div class="course-row-num">04</div>
+      <div>
+        <div class="course-row-name">Copilot for Sales</div>
+        <div class="course-row-desc">Client research, personalised proposals, meeting summaries, pipeline analysis, and sales communication at scale.</div>
+      </div>
+      <div class="course-row-duration">Half Day</div>
+    </div>
+    <div class="course-row">
+      <div class="course-row-num">05</div>
+      <div>
+        <div class="course-row-name">Copilot for Management</div>
+        <div class="course-row-desc">Meeting summaries, team communication, performance reporting, decision support, and leading an AI-ready team culture.</div>
+      </div>
+      <div class="course-row-duration">Half Day</div>
+    </div>
+    <div class="course-row">
+      <div class="course-row-num">06</div>
+      <div>
+        <div class="course-row-name">Copilot for Executive Leadership</div>
+        <div class="course-row-desc">AI strategy, governance, board communication, ROI measurement, and leading organisational AI transformation. Maximum 12 participants.</div>
+      </div>
+      <div class="course-row-duration">Half Day</div>
+    </div>
+  </div>
+
+  <div class="pilot-highlight">
+    <div class="pilot-left">
+      <div class="pilot-badge">Recommended Entry Point</div>
+      <div class="pilot-title">The Copilot Pilot</div>
+      <div class="pilot-text">A focused 30-day engagement with one department of up to 15 people. The lowest-risk way to demonstrate measurable ROI to Delta's leadership before committing to a full programme. Includes discovery, bespoke training delivery, post-training reinforcement check-ins, and a full adoption progress report.</div>
+    </div>
+    <div class="pilot-right">
+      <div class="pilot-cta">Scoped per engagement</div>
+      <div class="pilot-cta-sub">pricing discussed at scoping call</div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDY -->
+<div class="section alt">
+  <div class="section-eyebrow">Proven Results</div>
+  <h2 class="section-title">What this looks like<br>in <em>practice</em></h2>
+  <p class="section-text" style="margin-bottom:28px;">The following case study demonstrates the impact of role-specific Copilot training with a technical professional audience, directly relevant to Delta's data, finance, and analyst teams.</p>
+
+  <div class="case-study">
+    <div class="case-study-header">
+      <div class="case-study-client">
+        Canadian Institute for Health Information
+        <span>Public Sector · Canada · Data Analytics Team</span>
+      </div>
+      <div>
+        <div class="case-study-rating-num">10/10</div>
+        <div class="case-study-rating-label">Post-Training Rating</div>
+      </div>
+    </div>
+    <div class="case-study-grid">
+      <div>
+        <div class="case-study-block-label">The Challenge</div>
+        <div class="case-study-block-text">A team of 9 data analysts had access to Microsoft Copilot but were unaware of its ability to generate complex Excel formulas, perform deep data analysis, and assist with data visualizations. They were using it minimally and not realising any productivity benefit from their licences.</div>
+      </div>
+      <div>
+        <div class="case-study-block-label">What Was Delivered</div>
+        <div class="case-study-block-text">A bespoke Copilot for Excel training session covering formula generation, deep analytical prompting, structured outputs using Copilot agents, and data visualization workflows. Every example was built around the team's actual datasets and analytical tasks rather than generic demonstrations.</div>
+      </div>
+      <div>
+        <div class="case-study-block-label">The Outcome</div>
+        <div class="case-study-block-text">Participants went from minimal Copilot usage to confident, independent application across their core analytical workflows. The team rated the training 10 out of 10, the highest possible score, citing the practical, role-specific approach as the defining difference from previous training experiences.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GOVERNANCE -->
+<div class="section">
+  <div class="section-eyebrow">AI Governance</div>
+  <h2 class="section-title">Protecting Delta's data<br>as <em>Copilot scales</em></h2>
+  <p class="section-text">Copilot has access to your entire Microsoft 365 environment: emails, SharePoint, Teams, financial documents, HR records. Without governance, the risk of unintended data exposure, compliance issues, and misuse grows with every user who adopts it. Governance is not a compliance exercise. It is protection for your investment and your organisation.</p>
+
+  <div class="governance-grid">
+    <div class="governance-item">
+      <div class="governance-icon">📋</div>
+      <div>
+        <div class="governance-title">Acceptable Use Policy</div>
+        <div class="governance-text">A clear, practical policy defining what Copilot can and cannot be used for, tailored to Delta's specific risk profile and regulatory environment.</div>
+      </div>
+    </div>
+    <div class="governance-item">
+      <div class="governance-icon">🔐</div>
+      <div>
+        <div class="governance-title">Data Access Framework</div>
+        <div class="governance-text">Guidance on what information Copilot can access, what should be restricted, and how to configure permissions to prevent unintended data exposure.</div>
+      </div>
+    </div>
+    <div class="governance-item">
+      <div class="governance-icon">🎓</div>
+      <div>
+        <div class="governance-title">Staff Awareness Training</div>
+        <div class="governance-text">Every team member trained to understand AI boundaries: what to share, what not to share, and how to use Copilot responsibly with sensitive information.</div>
+      </div>
+    </div>
+    <div class="governance-item">
+      <div class="governance-icon">📊</div>
+      <div>
+        <div class="governance-title">Incident Response Process</div>
+        <div class="governance-text">A clear protocol for identifying, reporting, and responding to any AI-related data incidents, ensuring Delta can act quickly if something goes wrong.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DELIVERY PROCESS -->
+<div class="section alt">
+  <div class="section-eyebrow">Delivery Process</div>
+  <h2 class="section-title">The <em>30-day</em> engagement model</h2>
+  <p class="section-text">Every training engagement follows a structured four-phase process designed to maximise adoption and ensure measurable results, not just a training day that gets forgotten by Friday.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-week">Week 01</div>
+      <div>
+        <div class="timeline-title">Discovery and Preparation</div>
+        <div class="timeline-text">Pre-training survey sent to all participants covering current Copilot usage, confidence levels, daily workflow bottlenecks, and what they wish Copilot could do. A 20-minute briefing with the department head aligns on priorities and success criteria. All training content is built from these responses.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 02</div>
+      <div>
+        <div class="timeline-title">Bespoke Training Delivery</div>
+        <div class="timeline-text">A full-day or half-day session delivered in-person at Delta's premises or virtually. Every example, use case, and exercise is built around that department's actual workflows and documents. Participants leave with practical skills they can apply immediately, not a theoretical overview of features.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 03</div>
+      <div>
+        <div class="timeline-title">First Reinforcement Check-in</div>
+        <div class="timeline-text">A 60-minute group session addressing what came up in real usage during the first week back. Questions answered, workflows refined, habits reinforced. Most training programmes fail at this point as they disappear at this critical moment. We stay in.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 04</div>
+      <div>
+        <div class="timeline-title">Second Check-in and Progress Report</div>
+        <div class="timeline-text">Final reinforcement session followed by a comprehensive adoption progress report covering before and after confidence comparison, usage patterns observed, key wins documented, and a clear recommendation for the next phase. Mandel and Delta receive a full report they can present to leadership.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+  <div class="section-eyebrow">About AfricAI</div>
+  <h2 class="section-title">Zimbabwe's first Microsoft<br>Copilot <em>adoption specialist</em></h2>
+  <p class="section-text">AfricAI was founded by Gloria Ngwenya, a Microsoft 365 and Copilot adoption specialist with over 10 years of experience helping organisations get real, measurable ROI after AI and Microsoft 365 implementation. Gloria has trained professionals across Zimbabwe, Southern Africa, and internationally, maintaining a 4.9 out of 5 satisfaction rating across all engagements.</p>
+
+  <div class="about-grid">
+    <div class="about-stats">
+      <div class="about-stat">
+        <div class="about-stat-num">400+</div>
+        <div class="about-stat-label">Professionals Trained</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">4.9</div>
+        <div class="about-stat-label">Satisfaction Rating</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">10+</div>
+        <div class="about-stat-label">Years M365 Experience</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">7</div>
+        <div class="about-stat-label">Languages</div>
+      </div>
+    </div>
+    <div class="about-creds">
+      <div class="about-cred"><div class="about-cred-dot"></div>Zimbabwe's first Microsoft Copilot implementation specialist</div>
+      <div class="about-cred"><div class="about-cred-dot"></div>Specialisation in Copilot, Copilot Studio, agents, and enterprise AI governance</div>
+      <div class="about-cred"><div class="about-cred-dot"></div>International delivery: corporate and non-profit organisations across Canada, Zimbabwe and Southern Africa</div>
+      <div class="about-cred"><div class="about-cred-dot"></div>Fluent in English, Shona, Ndebele, Zulu, Portuguese, Xhosa, and Setswana</div>
+      <div class="about-cred"><div class="about-cred-dot"></div>Dedicated to building world-class AI skills across Africa</div>
+    </div>
+  </div>
+</div>
+
+<!-- INVESTMENT -->
+<div class="section alt">
+  <div class="section-eyebrow">Investment Summary</div>
+  <h2 class="section-title">A programme scoped<br>for <em>Delta's needs</em></h2>
+  <p class="section-text">Investment for a Copilot training programme is structured based on the number of departments, participant numbers, delivery format, and whether governance support is included. Every engagement is scoped specifically for the organisation rather than priced from a fixed rate card.</p>
+
+  <div class="investment-box">
+    <p style="font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.8;margin-bottom:20px;">Indicative engagements range from a focused pilot through to a comprehensive multi-department phased rollout. Detailed investment figures are provided following an initial scoping conversation where we can align on scope, priorities, and the right structure for Mandel and Delta.</p>
+
+    <div class="pilot-highlight" style="margin-top:0;">
+      <div class="pilot-left">
+        <div class="pilot-badge">Recommended Starting Point</div>
+        <div class="pilot-title">The Copilot Pilot</div>
+        <div class="pilot-text">A focused 30-day engagement with one department of up to 15 people. The lowest-risk way to demonstrate measurable ROI to Delta's leadership before committing to a full programme.</div>
+      </div>
+      <div class="pilot-right">
+        <div class="pilot-cta">Scoped per engagement</div>
+        <div class="pilot-cta-sub">let's talk</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="investment-note">Governance framework development is available as a standalone engagement or bundled with any training package. AfricAI is happy to discuss flexible structures including volume arrangements for multiple departments or phased delivery across the organisation.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-tagline">You build it. <em>I make sure people use it.</em></div>
+    <div class="footer-contact">
+      AfricAI · Founded by Gloria Ngwenya · Microsoft Copilot Adoption Specialist<br>
+      gloriabandangwenya@gmail.com · +263 779 208 031<br>
+      Harare, Zimbabwe · Remote Training Available
+    </div>
+  </div>
+  <div class="footer-brand">
+    <img src="unnamed__1_.jpg" alt="AfricAI" class="footer-brand-img" onerror="this.style.display:'none'">
+    <div class="footer-brand-name">AfricAI</div>
+  </div>
+</div>
+
+</body>
+</html>
