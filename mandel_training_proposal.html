@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfricAI: Microsoft Copilot Training Catalogue 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:       #050F1E;
+  --navy-mid:   #0A1A30;
+  --navy-soft:  #102040;
+  --cyan:       #00C4E8;
+  --cyan-soft:  #00A8C8;
+  --cyan-faint: rgba(0,196,232,0.07);
+  --cyan-glow:  rgba(0,196,232,0.15);
+  --white:      #FFFFFF;
+  --cream:      #F0F8FF;
+  --text-dim:   rgba(240,248,255,0.5);
+  --text-mid:   rgba(240,248,255,0.7);
+  --border:     rgba(0,196,232,0.15);
+  --border-bright: rgba(0,196,232,0.35);
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--navy); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Circuit board pattern */
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,196,232,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,196,232,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Cyan glow top right */
+.cover::after {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0,196,232,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Bottom glow */
+.cover-glow-bottom {
+  position: absolute;
+  bottom: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,196,232,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0,196,232,0.3);
+  box-shadow: 0 0 20px rgba(0,196,232,0.15);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-family: 'Jost', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.logo-tagline {
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.cover-badge {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--border-bright);
+  padding: 8px 16px;
+  border-radius: 2px;
+  background: var(--cyan-faint);
+}
+
+/* Cover centre */
+.cover-mid {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.cover-lion {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 36px;
+  border: 1px solid rgba(0,196,232,0.2);
+  box-shadow:
+    0 0 40px rgba(0,196,232,0.15),
+    0 0 80px rgba(0,196,232,0.05);
+  opacity: 0.85;
+}
+
+.cover-eyebrow {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+
+.cover-title em {
+  font-style: italic;
+  color: var(--cyan);
+}
+
+.cover-subtitle {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 20px;
+}
+
+/* Cover bottom */
+.cover-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+}
+
+.cover-stats {
+  display: flex;
+  gap: 56px;
+}
+
+.cover-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.cover-stat-label {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.cover-contact {
+  text-align: right;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+
+/* ── TOC ── */
+.toc {
+  background: var(--navy-mid);
+  padding: 48px 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 28px;
+  opacity: 0.7;
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 4px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: var(--cyan-faint);
+}
+
+.toc-item:hover {
+  border-color: var(--border-bright);
+  background: rgba(0,196,232,0.1);
+}
+
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--cyan);
+  opacity: 0.6;
+}
+
+.toc-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-mid);
+  letter-spacing: 0.05em;
+}
+
+/* ── WHY SECTION ── */
+.why {
+  padding: 80px 56px;
+  background: var(--navy);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.why::after {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,196,232,0.05) 0%, transparent 70%);
+}
+
+.why-inner {
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.8;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--cyan);
+  opacity: 0.5;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--cyan);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+
+.why-card {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  transition: border-color 0.2s;
+}
+
+.why-card:hover { border-color: var(--border-bright); }
+
+.why-card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--cyan);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.why-card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.why-card-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* ── COURSE SECTIONS ── */
+.course-section {
+  padding: 72px 56px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.course-section:nth-child(even) {
+  background: var(--navy-mid);
+}
+
+.course-section-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.course-header-left {}
+
+.course-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
+.course-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.course-title em {
+  font-style: italic;
+  color: var(--cyan);
+}
+
+.course-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.course-duration {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 2px;
+}
+
+.course-price-block {
+  text-align: right;
+}
+
+.course-price-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.5;
+  margin-bottom: 2px;
+}
+
+.course-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.course-price-sub {
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.course-intro {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 36px;
+}
+
+.course-designed {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 24px 28px;
+}
+
+.course-designed-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.course-designed-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+.course-outcomes {
+  background: var(--navy-soft);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 24px 28px;
+}
+
+.course-outcome-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.course-outcome-list li {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+
+.course-outcome-list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+/* Includes strip */
+.includes-strip {
+  background: rgba(0,196,232,0.05);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 20px 28px;
+}
+
+.includes-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+  opacity: 0.7;
+}
+
+.includes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+
+.includes-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+.includes-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── SPECIALISED HEADER ── */
+.specialised-header {
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-soft) 100%);
+  padding: 72px 56px 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.specialised-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,196,232,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.specialised-header::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,196,232,0.08) 0%, transparent 65%);
+}
+
+.specialised-header-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.specialised-intro {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-top: 20px;
+}
+
+/* Specialised grid overview */
+.specialised-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.spec-overview-card {
+  background: var(--navy);
+  border: 1px solid var(--border);
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.spec-overview-card:hover { background: var(--cyan-faint); }
+
+.spec-overview-name {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.spec-overview-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--cyan);
+}
+
+/* ── PRICING SUMMARY ── */
+.pricing-summary {
+  padding: 72px 56px;
+  background: var(--navy);
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+.pricing-table th {
+  background: var(--navy-soft);
+  color: var(--cyan);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-bright);
+}
+
+.pricing-table th:last-child { text-align: right; }
+
+.pricing-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-mid);
+  font-weight: 300;
+}
+
+.pricing-table td:last-child {
+  text-align: right;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--cyan);
+}
+
+.pricing-table tr:hover td { background: var(--cyan-faint); }
+.pricing-table tr.highlight td { background: rgba(0,196,232,0.05); }
+
+.pricing-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-top: 16px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: #020A14;
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0,196,232,0.2);
+}
+
+.footer-logo-name {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.footer-desc {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 240px;
+}
+
+.footer-section-title {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.footer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-list li {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+.footer-contact-item {
+  margin-bottom: 14px;
+}
+
+.footer-contact-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.5;
+  margin-bottom: 2px;
+}
+
+.footer-contact-value {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-dim);
+}
+
+.footer-bottom {
+  background: #010610;
+  padding: 18px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0,196,232,0.06);
+}
+
+.footer-copy {
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(240,248,255,0.15);
+  letter-spacing: 0.1em;
+}
+
+.footer-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(0,196,232,0.2);
+}
+
+@media (max-width: 768px) {
+  .cover, .toc, .course-section, .why, .specialised-header, .pricing-summary, .footer { padding: 36px 24px; }
+  .why-grid, .course-grid, .specialised-overview { grid-template-columns: 1fr; }
+  .footer { grid-template-columns: 1fr; }
+  .cover-stats { gap: 28px; }
+  .course-header { flex-direction: column; gap: 20px; }
+  .course-meta { align-items: flex-start; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-glow-bottom"></div>
+
+  <div class="cover-top">
+    <div class="logo">
+      <img src="unnamed__1_.jpg" alt="AfricAI Logo" class="logo-img" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <span class="logo-name">AfricAI</span>
+        <span class="logo-tagline">Empowering Africa with AI Skills</span>
+      </div>
+    </div>
+    <div class="cover-badge">Copilot Training Catalogue 2026</div>
+  </div>
+
+  <div class="cover-mid">
+    <img src="unnamed__1_.jpg" alt="AfricAI" class="cover-lion" onerror="this.style.display='none'">
+    <div class="cover-eyebrow">Microsoft Copilot Training</div>
+    <div class="cover-title">
+      Master<br><em>Copilot.</em><br>Lead the Future.
+    </div>
+    <div class="cover-subtitle">Foundations · Advanced · Role-Specific Specialisations</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-stats">
+      <div>
+        <div class="cover-stat-num">400+</div>
+        <div class="cover-stat-label">Professionals Trained</div>
+      </div>
+      <div>
+        <div class="cover-stat-num">4.9/5</div>
+        <div class="cover-stat-label">Satisfaction Rating</div>
+      </div>
+      <div>
+        <div class="cover-stat-num">8</div>
+        <div class="cover-stat-label">Copilot Courses</div>
+      </div>
+    </div>
+    <div class="cover-contact">
+      <div>gloriabandangwenya@gmail.com</div>
+      <div>+263 779 208 031</div>
+      <div>Harare, Zimbabwe · Remote Training Available</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="toc">
+  <div class="toc-title">Course Directory</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#foundations"><span class="toc-num">01</span><span class="toc-label">Copilot Foundations</span></a>
+    <a class="toc-item" href="#advanced"><span class="toc-num">02</span><span class="toc-label">Copilot Advanced</span></a>
+    <a class="toc-item" href="#hr"><span class="toc-num">03</span><span class="toc-label">Copilot for HR</span></a>
+    <a class="toc-item" href="#finance"><span class="toc-num">04</span><span class="toc-label">Copilot for Finance</span></a>
+    <a class="toc-item" href="#sales"><span class="toc-num">05</span><span class="toc-label">Copilot for Sales</span></a>
+    <a class="toc-item" href="#customer-service"><span class="toc-num">06</span><span class="toc-label">Copilot for Customer Service</span></a>
+    <a class="toc-item" href="#management"><span class="toc-num">07</span><span class="toc-label">Copilot for Management</span></a>
+    <a class="toc-item" href="#executive"><span class="toc-num">08</span><span class="toc-label">Copilot for Executive Leadership</span></a>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="why-inner">
+    <div class="section-eyebrow">The Reality</div>
+    <h2 class="section-title">Your organisation is paying for<br>Copilot. Is it <em>actually working?</em></h2>
+    <p style="font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.75;max-width:680px;">Microsoft Copilot is one of the most powerful productivity tools ever built. But across Africa and the MEA region, the same story plays out : licences purchased, deployment completed, adoption stalled. The technology is ready. The people aren't prepared.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-card-num">20%</div>
+      <div class="why-card-title">Average adoption without training</div>
+      <div class="why-card-text">Without structured training and adoption support, fewer than 1 in 5 users meaningfully engage with Copilot after deployment.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">$30</div>
+      <div class="why-card-title">Per user per month wasted</div>
+      <div class="why-card-text">Every unused Copilot licence is money left on the table. For 100 users that's $36,000 per year : paying for a tool nobody uses.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">Q</div>
+      <div class="why-card-title">Copilot updates every quarter</div>
+      <div class="why-card-text">Microsoft releases significant new Copilot capabilities regularly. Without ongoing training, your organisation falls further behind with every update.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 FOUNDATIONS -->
+<section class="course-section" id="foundations">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">01 / 08</div>
+        <h2 class="course-title">Copilot <em>Foundations</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">6 hrs / Full Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">The essential starting point for every professional who has access to Microsoft Copilot but doesn't know how to unlock its value. This full-day session builds the foundation that makes every other Copilot course more effective and transforms how participants work from day one.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">All staff with basic Microsoft 365 familiarity : professionals across every department who want to save time, reduce repetitive work, and produce higher quality output using Copilot. No technical background required.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Understand what Copilot is, how it works, and what it cannot do</li>
+          <li>Write effective prompts: the skill that determines Copilot's output quality</li>
+          <li>Use Copilot in Word to draft, summarise, and rewrite documents</li>
+          <li>Use Copilot in Excel to analyse data and generate formulas</li>
+          <li>Use Copilot in Outlook to draft replies and summarise email threads</li>
+          <li>Use Copilot in Teams to summarise meetings and generate action items</li>
+          <li>Use Copilot in PowerPoint to build presentations from briefs</li>
+          <li>Apply Copilot confidently to their specific daily work scenarios</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Every Copilot Foundations Session Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>Pre-training skills assessment</div>
+        <div class="includes-item"><span class="includes-dot"></span>Industry-specific use case library</div>
+        <div class="includes-item"><span class="includes-dot"></span>Prompt engineering quick guide</div>
+        <div class="includes-item"><span class="includes-dot"></span>30-day post-training support</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Delivered in English or Shona</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ADVANCED -->
+<section class="course-section" id="advanced">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">02 / 08</div>
+        <h2 class="course-title">Copilot <em>Advanced</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">6 hrs / Full Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">For professionals who have completed Copilot Foundations and are ready to use AI at a strategic level. This session moves from using Copilot to mastering it : building workflows, governing AI use, and driving organisation-wide adoption as a change management process.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">Managers, analysts, department heads, and power users who want to go beyond basic prompting : building AI workflows, governing usage across their teams, and maximising the ROI of their organisation's Copilot investment.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Master advanced prompting : chaining, personas, and context-setting</li>
+          <li>Build and deploy basic Copilot agents using Copilot Studio</li>
+          <li>Design department-specific AI workflows that save measurable hours</li>
+          <li>Implement AI governance : data privacy, acceptable use, policy frameworks</li>
+          <li>Measure and report on Copilot ROI for leadership and boards</li>
+          <li>Train and coach colleagues as internal Copilot champions</li>
+          <li>Stay current as Copilot evolves : adopting new features strategically</li>
+          <li>Lead organisational AI adoption as a change management process</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Every Copilot Advanced Session Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>Pre-training skills assessment</div>
+        <div class="includes-item"><span class="includes-dot"></span>Advanced prompt engineering guide</div>
+        <div class="includes-item"><span class="includes-dot"></span>AI governance policy starter template</div>
+        <div class="includes-item"><span class="includes-dot"></span>30-day post-training support</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Copilot ROI measurement framework</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALISED HEADER -->
+<div class="specialised-header">
+  <div class="specialised-header-inner">
+    <div class="section-eyebrow">Role-Specific Training</div>
+    <h2 class="section-title">Copilot for <em>Your World</em></h2>
+    <p class="specialised-intro">Generic Copilot training teaches features. Role-specific Copilot training changes how a department works. Each specialised course is built around the real daily tasks, workflows, and challenges of a specific professional role : making adoption immediate and measurable.</p>
+  </div>
+  <div class="specialised-overview">
+    <div class="spec-overview-card"><span class="spec-overview-name">Copilot for HR</span><span class="spec-overview-price" style="font-size:13px;">On Request</span></div>
+    <div class="spec-overview-card"><span class="spec-overview-name">Copilot for Finance</span><span class="spec-overview-price" style="font-size:13px;">On Request</span></div>
+    <div class="spec-overview-card"><span class="spec-overview-name">Copilot for Sales</span><span class="spec-overview-price" style="font-size:13px;">On Request</span></div>
+    <div class="spec-overview-card"><span class="spec-overview-name">Copilot for Customer Service</span><span class="spec-overview-price" style="font-size:13px;">On Request</span></div>
+    <div class="spec-overview-card"><span class="spec-overview-name">Copilot for Management</span><span class="spec-overview-price" style="font-size:13px;">On Request</span></div>
+    <div class="spec-overview-card"><span class="spec-overview-name">Copilot for Executive Leadership</span><span class="spec-overview-price" style="font-size:13px;">On Request</span></div>
+  </div>
+</div>
+
+<!-- 03 HR -->
+<section class="course-section" id="hr">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">03 / 08</div>
+        <h2 class="course-title">Copilot for <em>HR</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">4 hrs / Half Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">HR professionals spend significant time on documentation, communication, and people processes. Copilot can transform every one of these : from drafting job descriptions to summarising interviews, managing onboarding documentation to supporting performance conversations.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">HR managers, HR business partners, talent acquisition specialists, and L&D professionals who want to reduce administrative burden and focus more time on people strategy and employee experience.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Draft and refine job descriptions, offer letters, and HR policies using Copilot</li>
+          <li>Use Copilot to summarise interview notes and candidate feedback</li>
+          <li>Build onboarding documentation and training materials faster</li>
+          <li>Use Copilot in Teams to summarise HR meetings and track action items</li>
+          <li>Draft employee communications : announcements, updates, sensitive messages</li>
+          <li>Use Copilot in Excel to analyse HR data : headcount, turnover, engagement</li>
+          <li>Create performance review frameworks and appraisal documentation</li>
+          <li>Develop and maintain an AI acceptable use policy for their organisation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>HR-specific prompt library</div>
+        <div class="includes-item"><span class="includes-dot"></span>Policy and documentation templates</div>
+        <div class="includes-item"><span class="includes-dot"></span>AI acceptable use policy starter</div>
+        <div class="includes-item"><span class="includes-dot"></span>Post-training support (14 days)</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Prerequisite: Copilot Foundations recommended</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 FINANCE -->
+<section class="course-section" id="finance">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">04 / 08</div>
+        <h2 class="course-title">Copilot for <em>Finance</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">4 hrs / Half Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">Finance teams live in Excel, Word, and Outlook : exactly where Copilot is most powerful. This course transforms how finance professionals analyse data, produce reports, and communicate financial insights to stakeholders and leadership.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">Finance managers, accountants, financial analysts, FP&A teams, and CFO office staff who want to produce faster, more accurate financial reports and spend less time on manual data work and document drafting.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Use Copilot in Excel to analyse financial data, generate formulas, and identify trends</li>
+          <li>Draft financial reports, board packs, and management accounts using Copilot in Word</li>
+          <li>Use Copilot to summarise complex financial documents and contracts</li>
+          <li>Build financial narrative and commentary faster with AI assistance</li>
+          <li>Use Copilot in PowerPoint to create financial presentations for leadership</li>
+          <li>Automate routine reporting workflows using Copilot and Excel</li>
+          <li>Use Copilot in Teams to manage finance meetings and track deliverables</li>
+          <li>Apply data governance principles when using AI with sensitive financial information</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>Finance-specific prompt library</div>
+        <div class="includes-item"><span class="includes-dot"></span>Excel Copilot formula guide</div>
+        <div class="includes-item"><span class="includes-dot"></span>Financial report template pack</div>
+        <div class="includes-item"><span class="includes-dot"></span>Post-training support (14 days)</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Prerequisite: Copilot Foundations recommended</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SALES -->
+<section class="course-section" id="sales">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">05 / 08</div>
+        <h2 class="course-title">Copilot for <em>Sales</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">4 hrs / Half Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">Sales professionals spend too much time on admin and not enough time selling. Copilot changes that equation : handling the writing, summarising, and research so your sales team can focus on building relationships and closing deals.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">Sales representatives, account managers, business development professionals, and sales leaders who want to reduce administrative burden, improve client communication, and use AI to accelerate their sales process.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Use Copilot to research prospects and prepare for client meetings</li>
+          <li>Draft personalised sales emails, proposals, and follow-up communications</li>
+          <li>Use Copilot in Teams to summarise client meetings and extract action items</li>
+          <li>Build compelling sales presentations faster with Copilot in PowerPoint</li>
+          <li>Use Copilot in Outlook to manage high-volume client correspondence efficiently</li>
+          <li>Analyse sales data and pipeline reports using Copilot in Excel</li>
+          <li>Draft and refine proposals, contracts, and scope of work documents</li>
+          <li>Use AI to personalise outreach at scale without losing authenticity</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>Sales-specific prompt library</div>
+        <div class="includes-item"><span class="includes-dot"></span>Email and proposal templates</div>
+        <div class="includes-item"><span class="includes-dot"></span>Meeting summary workflow guide</div>
+        <div class="includes-item"><span class="includes-dot"></span>Post-training support (14 days)</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Prerequisite: Copilot Foundations recommended</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 CUSTOMER SERVICE -->
+<section class="course-section" id="customer-service">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">06 / 08</div>
+        <h2 class="course-title">Copilot for <em>Customer Service</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">4 hrs / Half Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">Customer service teams handle high volumes of complex communication under pressure. Copilot becomes their most valuable team member : helping them respond faster, maintain consistency, and deliver exceptional service at scale without burning out.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">Customer service agents, team leaders, and operations managers who handle client communication, complaints, and service delivery : and want to improve response quality and speed without increasing headcount.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Use Copilot to draft professional, empathetic customer responses faster</li>
+          <li>Summarise complex customer issues and thread histories instantly</li>
+          <li>Maintain consistent brand tone across all customer communications</li>
+          <li>Use Copilot to draft escalation communications and resolution letters</li>
+          <li>Create and maintain customer service scripts and response templates</li>
+          <li>Use Teams Copilot to manage team briefings and shift handovers</li>
+          <li>Analyse customer feedback and service data using Copilot in Excel</li>
+          <li>Build a knowledge base and FAQ documentation using Copilot in Word</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>Customer service prompt library</div>
+        <div class="includes-item"><span class="includes-dot"></span>Response template pack</div>
+        <div class="includes-item"><span class="includes-dot"></span>Tone and brand consistency guide</div>
+        <div class="includes-item"><span class="includes-dot"></span>Post-training support (14 days)</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Prerequisite: Copilot Foundations recommended</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 MANAGEMENT -->
+<section class="course-section" id="management">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">07 / 08</div>
+        <h2 class="course-title">Copilot for <em>Management</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">4 hrs / Half Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">Managers are pulled in every direction : meetings, decisions, communication, reporting. Copilot gives them time back. This course is designed to help managers lead more effectively, communicate more clearly, and make better-informed decisions using AI as a strategic tool.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">Middle managers, department heads, and team leaders who want to use Copilot to streamline their management workflows, improve team communication, and spend less time on administrative tasks and more time on leadership.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Use Copilot in Teams to summarise meetings, track decisions, and assign actions</li>
+          <li>Draft team communications, performance feedback, and project updates with Copilot</li>
+          <li>Use Copilot to prepare for difficult conversations and sensitive communications</li>
+          <li>Build management reports and department updates faster using Word and PowerPoint</li>
+          <li>Analyse team performance data and metrics using Copilot in Excel</li>
+          <li>Use Copilot to develop team training plans and competency frameworks</li>
+          <li>Lead their team's AI adoption: champion, govern, and role-model Copilot use</li>
+          <li>Use AI to make faster, better-informed operational decisions</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>Management-specific prompt library</div>
+        <div class="includes-item"><span class="includes-dot"></span>Team communication templates</div>
+        <div class="includes-item"><span class="includes-dot"></span>Copilot champion playbook</div>
+        <div class="includes-item"><span class="includes-dot"></span>Post-training support (14 days)</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Prerequisite: Copilot Foundations recommended</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 EXECUTIVE -->
+<section class="course-section" id="executive">
+  <div class="course-section-inner">
+    <div class="course-header">
+      <div class="course-header-left">
+        <div class="course-num">08 / 08</div>
+        <h2 class="course-title">Copilot for <em>Executive Leadership</em></h2>
+      </div>
+      <div class="course-meta">
+        <div class="course-duration">4 hrs / Half Day</div>
+        <div class="course-price-block">
+          <div class="course-price-label">Flat Rate</div>
+          <div class="course-price" style="font-size:14px;letter-spacing:0.1em;">On Request</div>
+          <div class="course-price-sub">pricing on request · max 12</div>
+        </div>
+      </div>
+    </div>
+    <p class="course-intro">AI is no longer just an operational tool. It is a strategic imperative. This boardroom-style session is designed for C-suite leaders and senior executives who need to understand what AI means for their organisation, their industry, and their own leadership. No jargon. No tech overwhelm. Just clarity.</p>
+    <div class="course-grid">
+      <div class="course-designed">
+        <div class="course-designed-label">Designed For</div>
+        <div class="course-designed-text">CEOs, MDs, CFOs, COOs, and C-suite leaders who need strategic clarity on AI, want to use Copilot personally to improve their own productivity, and need to lead their organisation's AI transformation with confidence. Maximum 12 participants.</div>
+      </div>
+      <div class="course-outcomes">
+        <div class="course-designed-label">What Participants Will Be Able To Do</div>
+        <ul class="course-outcome-list">
+          <li>Understand AI's strategic impact on their industry and competitive landscape</li>
+          <li>Use Copilot personally: communications, briefings, board preparation, analysis</li>
+          <li>Lead an AI-ready organisational culture: what it looks like and how to build it</li>
+          <li>Make informed decisions about AI investment, governance, and risk</li>
+          <li>Understand and communicate AI ROI to boards, shareholders, and regulators</li>
+          <li>Use Copilot in Teams for executive meeting management and strategic follow-through</li>
+          <li>Build an AI governance framework appropriate for their organisation's risk profile</li>
+          <li>Position their organisation as an AI-ready enterprise in their market</li>
+        </ul>
+      </div>
+    </div>
+    <div class="includes-strip">
+      <div class="includes-label">Includes</div>
+      <div class="includes-grid">
+        <div class="includes-item"><span class="includes-dot"></span>Executive AI briefing document</div>
+        <div class="includes-item"><span class="includes-dot"></span>AI strategy framework template</div>
+        <div class="includes-item"><span class="includes-dot"></span>Governance and risk overview</div>
+        <div class="includes-item"><span class="includes-dot"></span>Post-training support (30 days)</div>
+        <div class="includes-item"><span class="includes-dot"></span>Certificate of completion</div>
+        <div class="includes-item"><span class="includes-dot"></span>Private boardroom setting · fully bespoke</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SUMMARY -->
+<section class="pricing-summary">
+  <div class="section-eyebrow">Pricing Summary</div>
+  <h2 class="section-title">Complete <em>Copilot</em> Training Ecosystem</h2>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Duration</th>
+        <th>Audience</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight"><td>Copilot Foundations</td><td>Full day</td><td>All staff, basic M365 familiarity required</td><td>On request</td></tr>
+      <tr class="highlight"><td>Copilot Advanced</td><td>Full day</td><td>Managers, analysts, and power users</td><td>On request</td></tr>
+      <tr><td>Copilot for HR</td><td>Half day</td><td>HR professionals and L&D teams</td><td>On request</td></tr>
+      <tr><td>Copilot for Finance</td><td>Half day</td><td>Finance teams and analysts</td><td>On request</td></tr>
+      <tr><td>Copilot for Sales</td><td>Half day</td><td>Sales and business development teams</td><td>On request</td></tr>
+      <tr><td>Copilot for Customer Service</td><td>Half day</td><td>Customer service agents and team leads</td><td>On request</td></tr>
+      <tr><td>Copilot for Management</td><td>Half day</td><td>Middle managers and department heads</td><td>On request</td></tr>
+      <tr><td>Copilot for Executive Leadership</td><td>Half day</td><td>C-suite and senior leadership (max 12)</td><td>On request</td></tr>
+    </tbody>
+  </table>
+  <p class="pricing-note">Pricing is tailored to your organisation, group size, and delivery format. Please get in touch to discuss a structure that works for you. We recommend completing Copilot Foundations before attending any specialised course for maximum impact.</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">
+      <img src="unnamed__1_.jpg" alt="AfricAI" class="footer-logo-img" onerror="this.style.display='none'">
+      <span class="footer-logo-name">AfricAI</span>
+    </div>
+    <p class="footer-desc">AfricAI delivers world-class Microsoft 365 and Copilot training across Zimbabwe and the African continent, building the digital skills foundation that Africa's workforce needs to thrive in the age of artificial intelligence.</p>
+  </div>
+  <div>
+    <div class="footer-section-title">All Copilot Courses</div>
+    <ul class="footer-list">
+      <li>Copilot Foundations</li>
+      <li>Copilot Advanced</li>
+      <li>Copilot for HR</li>
+      <li>Copilot for Finance</li>
+      <li>Copilot for Sales</li>
+      <li>Copilot for Customer Service</li>
+      <li>Copilot for Management</li>
+      <li>Copilot for Executive Leadership</li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-section-title">Get In Touch</div>
+    <div class="footer-contact-item">
+      <div class="footer-contact-label">Email</div>
+      <div class="footer-contact-value">gloriabandangwenya@gmail.com</div>
+    </div>
+    <div class="footer-contact-item">
+      <div class="footer-contact-label">WhatsApp</div>
+      <div class="footer-contact-value">+263 779 208 031</div>
+    </div>
+    <div class="footer-contact-item">
+      <div class="footer-contact-label">Location</div>
+      <div class="footer-contact-value">Harare, Zimbabwe</div>
+    </div>
+    <div class="footer-contact-item">
+      <div class="footer-contact-label">Delivery</div>
+      <div class="footer-contact-value">In-person and Remote Available</div>
+    </div>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <span class="footer-copy">© AfricAI 2026. All rights reserved. Pricing available on request. Contact us to discuss your requirements.</span>
+  <span class="footer-year">2026</span>
+</div>
+
+</body>
+</html>
